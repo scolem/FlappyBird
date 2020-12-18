@@ -1,3 +1,7 @@
+package model;
+
+import sdk.StdDraw;
+
 public class Pipe
 {
   private double vel = -0.02;//velocity of the pipe
@@ -30,8 +34,8 @@ public class Pipe
   
   public void draw()//draw top and bottom
   {   
-    StdDraw.picture(left+WIDTH/2.0, top+1, "pipetop.png", WIDTH, 2);
-    StdDraw.picture(left+WIDTH/2.0, top-GAP_HEIGHT-1, "pipebot.png", WIDTH, 2); 
+    StdDraw.picture(left + WIDTH / 2.0, top + 1, "resources/images/pipetop.png", WIDTH, 2);
+    StdDraw.picture(left + WIDTH / 2.0, top - GAP_HEIGHT - 1, "resources/images/pipebot.png", WIDTH, 2);
   }
   
   public double [] getGap()//top, bot, left, right

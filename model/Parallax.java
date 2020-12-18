@@ -1,3 +1,7 @@
+package model;
+
+import sdk.StdDraw;
+
 public class Parallax
 {
   private String pic;
@@ -36,7 +40,7 @@ public class Parallax
   {
     for(int i=0; i<noPics; i++)
     {    
-      StdDraw.picture(posX[i],posY,pic, picWidth*1.005, picHeight);//overlap pics slightly to avoid flicker
+      StdDraw.picture(posX[i],posY,pic, picWidth * 1.005, picHeight);//overlap pics slightly to avoid flicker
     }
   }
   

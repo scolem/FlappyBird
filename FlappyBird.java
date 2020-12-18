@@ -1,3 +1,9 @@
+import model.Bird;
+import model.Parallax;
+import model.Pipe;
+import sdk.StdAudio;
+import sdk.StdDraw;
+
 import java.awt.*;
 import java.util.*;
 import java.io.*;
@@ -19,11 +25,11 @@ class FlappyBird
   public static void main(String[]args)
   {
     setScale();
-    StdAudio.loop("back2.wav");
+    StdAudio.loop("resources/sounds/back2.wav");
     
     try
     {
-      Font gameFont=Font.createFont(Font.TRUETYPE_FONT, new FileInputStream("gamefont.ttf"));
+      Font gameFont=Font.createFont(Font.TRUETYPE_FONT, new FileInputStream("resources/fonts/gamefont.ttf"));
       gameFont=gameFont.deriveFont(25f);
       StdDraw.setFont(gameFont);
     }
@@ -34,7 +40,7 @@ class FlappyBird
     
     do
     { 
-//StdAudio.loop("back2.wav");   
+//sdk.StdAudio.loop("back2.wav");
       setUp();
         
       showTitle();
@@ -48,14 +54,14 @@ class FlappyBird
       }while(!collision);
       
       gameOver();
-//StdAudio.close();
+//sdk.StdAudio.close();
     }while(true);
   }
   
   public static void setUp()//reset all ( & create new objects)
   {     
-    //StdAudio.loop("back.wav");
-//    StdDraw.setFont(new Font("SansSerif", Font.PLAIN, 25));
+    //sdk.StdAudio.loop("back.wav");
+//    sdk.StdDraw.setFont(new Font("SansSerif", Font.PLAIN, 25));
 
     score=0;
     
@@ -65,10 +71,10 @@ class FlappyBird
     for(int i=0; i<numPipes; i++)
       pipes[i]=new Pipe(i+1);
       
-   // background=new Parallax("bglong.png", 2/504.0*900, 2, 0, -0.01);
-    city=new Parallax("city.png", 1, 1, -0.5, -0.01);
-    trees=new Parallax("trees.png", 0.5, 0.8, -0.6, -0.015);
-    front=new Parallax("ground.png", 0.7, 0.1, -0.95, -0.025);
+   // background=new model.Parallax("bglong.png", 2/504.0*900, 2, 0, -0.01);
+    city=new Parallax("resources/images/city.png", 1, 1, -0.5, -0.01);
+    trees=new Parallax("resources/images/trees.png", 0.5, 0.8, -0.6, -0.015);
+    front=new Parallax("resources/images/ground.png", 0.7, 0.1, -0.95, -0.025);
   }
   
   public static void setScale()
@@ -103,23 +109,23 @@ class FlappyBird
   public static void gameOver()//end screen until space
   {  
     StdDraw.setPenColor();
-    StdDraw.picture(0,0.5,"gameover.png");
+    StdDraw.picture(0,0.5, "resources/images/gameover.png");
     
     String highscore=highscore();
-    StdDraw.picture(0,0,"gameoverbg2.png");
+    StdDraw.picture(0,0, "resources/images/gameoverbg2.png");
      
-  //  StdDraw.text(0,0.5,"Highscore: "+highscore);
+  //  sdk.StdDraw.text(0,0.5,"Highscore: "+highscore);
       
- //   StdDraw.text(0,0,"GAME OVER  you scored "+score+" press space");
+ //   sdk.StdDraw.text(0,0,"GAME OVER  you scored "+score+" press space");
       
     double medalX=-0.25;
     double medalY=-0.03;
       
     //calculate medal
-    if(score>=40)       StdDraw.picture(medalX, medalY,"platinum.png");
-    else if (score>=30) StdDraw.picture(medalX, medalY,"gold.png");
-    else if (score>=20) StdDraw.picture(medalX, medalY,"silver.png");
-    else if (score>=10) StdDraw.picture(medalX, medalY,"bronze.png");
+    if(score>=40)       StdDraw.picture(medalX, medalY, "resources/images/platinum.png");
+    else if (score>=30) StdDraw.picture(medalX, medalY, "resources/images/gold.png");
+    else if (score>=20) StdDraw.picture(medalX, medalY, "resources/images/silver.png");
+    else if (score>=10) StdDraw.picture(medalX, medalY, "resources/images/bronze.png");
     
     StdDraw.textRight(0.36,0.04,""+score);
     StdDraw.textRight(0.36,-0.1,""+highscore);
@@ -200,7 +206,7 @@ class FlappyBird
   
   public static void drawBackground()//moves and draws background objects
   {  
-    StdDraw.setPenColor(StdDraw.BOOK_LIGHT_BLUE ); 
+    StdDraw.setPenColor(StdDraw.BOOK_LIGHT_BLUE );
     StdDraw.filledSquare(0, 0, 1); 
  //   background.move();
  //   background.draw();
@@ -247,7 +253,7 @@ class FlappyBird
       if(pipes[i].getPoint(bird.getPos()))
       {
         score++;
-        StdAudio.play("point.wav");
+        StdAudio.play("resources/sounds/point.wav");
       }
     }
   }
@@ -274,7 +280,7 @@ class FlappyBird
       collision = true;
       drawScreen(collision);
       
-      StdAudio.play("die.wav");
+      StdAudio.play("resources/sounds/die.wav");
     }  
     
     for(int i=0; i<numPipes; i++)//if bird hit pipe, then fall to bottom
@@ -294,7 +300,7 @@ class FlappyBird
         if(!collision)
         {
           collision = true;
-          StdAudio.play("die.wav");
+          StdAudio.play("resources/sounds/die.wav");
         }
           
         while(!bird.getBottomCollision())  //continue until it has hit the bottom

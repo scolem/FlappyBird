@@ -1,3 +1,8 @@
+package model;
+
+import sdk.StdAudio;
+import sdk.StdDraw;
+
 public class Bird
 {
   // initial values
@@ -20,9 +25,9 @@ public class Bird
   
   public void drawBird(boolean hit)//draws the bird on the screen
   {  
-  //  StdDraw.setPenColor(StdDraw.ORANGE); 
-  //  StdDraw.filledRectangle(rx, ry, RADIUSX, RADIUSY);
-    StdDraw.picture(rx, ry, "clumsy"+getAnimation(hit)+".png", RADIUSX*2, RADIUSY*2, getAngle(hit)); 
+  //  sdk.StdDraw.setPenColor(sdk.StdDraw.ORANGE);
+  //  sdk.StdDraw.filledRectangle(rx, ry, RADIUSX, RADIUSY);
+    StdDraw.picture(rx, ry, "clumsy" + getAnimation(hit) + ".png", RADIUSX * 2, RADIUSY * 2, getAngle(hit));
   }
   
   private int getAnimation (boolean hit)//get which frame of amimation to use
@@ -76,7 +81,7 @@ public class Bird
   public void flap()//when space is pressed, set vy and play sound
   {
     vy=JUMP_VEL;
-    StdAudio.play("jump.wav");
+    StdAudio.play("resources/sounds/jump.wav");
   }
   
   public void stop()//bird stops when it hits the pipe
