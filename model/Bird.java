@@ -27,7 +27,7 @@ public class Bird
   {  
   //  sdk.StdDraw.setPenColor(sdk.StdDraw.ORANGE);
   //  sdk.StdDraw.filledRectangle(rx, ry, RADIUSX, RADIUSY);
-    StdDraw.picture(rx, ry, "clumsy" + getAnimation(hit) + ".png", RADIUSX * 2, RADIUSY * 2, getAngle(hit));
+    StdDraw.picture(rx, ry, "resources/images/clumsy" + getAnimation(hit) + ".png", RADIUSX * 2, RADIUSY * 2, getAngle(hit));
   }
   
   private int getAnimation (boolean hit)//get which frame of amimation to use
